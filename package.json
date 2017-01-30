@@ -9,5 +9,8 @@
   "scripts": {
     "build": "webpack"
   },
-  "name": "webpack2-boilerplate"
+  "name": "webpack2-boilerplate",
+  "dependencies": {
+    "lodash": "^4.17.4"
+  }
 }
