@@ -3,5 +3,5 @@
  */
 
 module.exports = {
-  data: "I am a Lazy Loading Component... /yawn"
+  data: "I am a <strong>Lazy</strong> Loading Component... <em>/yawn</em>"
 };

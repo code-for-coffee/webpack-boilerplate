@@ -1,5 +1,7 @@
 const webpack = require ('webpack');
 
+// grab airline code from config
+// store somewhere (aka cookie)
 const extractSharedLibraries = new webpack.optimize.CommonsChunkPlugin({
   name: 'commonLibs',
   filename: 'commonLibs.js'
