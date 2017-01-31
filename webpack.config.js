@@ -7,6 +7,11 @@ const extractSharedLibraries = new webpack.optimize.CommonsChunkPlugin({
   filename: 'commonLibs.js'
 });
 
+const treeShakenMinifyer = new webpack.LoaderOptionsPlugin({
+  minimize: true,
+  debug: false
+});
+
 const config = {
   context: __dirname + '/src/js',
     entry: {
@@ -21,14 +26,19 @@ const config = {
     },
     plugins: [
       extractSharedLibraries,
+      treeShakenMinifyer,
       new webpack.NamedModulesPlugin()
     ],
     devtool: "source-map",
     module: {
       rules: [
         {
+          exclude: /(node_modules|bower_components)/,
           test: /\.js$/,
-          loader: 'babel-loader'
+          loader: 'babel-loader',
+          query: {
+            presets: [['es2015', { modules: false }]]
+          }
         }
       ]
     }

@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import SampleComponent from './components/SampleComponent';
 
 window.onload = (event) => {

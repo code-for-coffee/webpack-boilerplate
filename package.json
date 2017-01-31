@@ -8,10 +8,8 @@
   },
   "scripts": {
     "build": "webpack -p",
+    "prod": "webpack --optimize-minimize",
     "start": "webpack-dev-server --inline --hot"
   },
-  "name": "webpack2-boilerplate",
-  "dependencies": {
-    "lodash": "^4.17.4"
-  }
+  "name": "webpack2-boilerplate"
 }
