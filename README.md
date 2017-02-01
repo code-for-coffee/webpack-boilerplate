@@ -31,11 +31,37 @@ Webpack 2 removes ES6 modules (anything using the `import ...` syntax) that aren
 
 #### Promise Polyfill for older browsers
 
-A `Promise` polyfill must be included for browsers that do not support it. [Check to see if you need a Polyfill on caniuse](http://caniuse.com/#feat=promises). If you do, in the `/src/js/app.js` file, you could include the following snippet to utilize Lazy Loading (code splitting) to import in your Polyfill. This way, you only load the additional script if needed.
+In Webpack 1.x, you had to specify a Promsie library. In Webpack 2, a `Promise` polyfill must be included for browsers that do not support it. [Check to see if you need a Polyfill on caniuse](http://caniuse.com/#feat=promises). If you do, in the `/src/js/app.js` file, you could include the following snippet to utilize Lazy Loading (code splitting) to import in your Polyfill. This way, you only load the additional script if needed.
+
+First, add `es6-promise` to your dependencies.
+
+`yarn add es6-promise`
+
+Then, import via code-spliting/lazy loading:
 
 ```javascript
 // make sure this is hoisted first!
 if (!window.Promise) {
-  System.import('./path/to/es6-promise.js');
+  System.import('es6-promise').polyfill();
 }
+```
+
+##### Usage in IE<9
+
+`catch` is a reserved word in IE<9, meaning `promise.catch(func)` throws a syntax error. To work around this, you can use a string to access the property as shown in the following example.
+
+However, please remember that such technique is already provided by most common minifiers, making the resulting code safe for old browsers and production:
+
+```js
+promise['catch'](function(err) {
+  // ...
+});
+```
+
+Or use `.then` instead:
+
+```js
+promise.then(undefined, function(err) {
+  // ...
+});
 ```
