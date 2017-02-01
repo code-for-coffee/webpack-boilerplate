@@ -9,9 +9,7 @@ window.onload = (event) => {
   lazyBtn.addEventListener('click', (event) => {
 
     console.log('Loading LazyLoadingComponent');
-    // import based on airline, aka ./asa/components/index
-    // fetch appropriate repos, etc
-    // do the thang - this would prolly npm run setup to grab from config val
+
     System.import('./components/LazyLoadingComponent').then((LazyLoadingComponent) => {
       console.log(LazyLoadingComponent);
       let lazyComponent = new LazyLoadingComponent('.lazy');
