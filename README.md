@@ -28,3 +28,14 @@ Webpack can load/import individual Javascript files as needed. In `/src/js/app.j
 #### Tree Shaking
 
 Webpack 2 removes ES6 modules (anything using the `import ...` syntax) that aren't actually imported into your project through a technique called _tree shaking_. Notice that in your `build` or `prod` output, `/src/js/components/NotUseComponent.js` is not included in the output.
+
+#### Promise Polyfill for older browsers
+
+A `Promise` polyfill must be included for browsers that do not support it. [Check to see if you need a Polyfill on caniuse](http://caniuse.com/#feat=promises). If you do, in the `/src/js/app.js` file, you could include the following snippet to utilize Lazy Loading (code splitting) to import in your Polyfill. This way, you only load the additional script if needed.
+
+```javascript
+// make sure this is hoisted first!
+if (!window.Promise) {
+  System.import('./path/to/es6-promise.js');
+}
+```
