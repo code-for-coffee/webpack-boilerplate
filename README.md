@@ -10,8 +10,7 @@ This boilerplate is designed to get you up and running with Webpack 2. It is min
 4. Open the `webpack.config.js` and add starting source files to your `entry` file. Note the current entry file is `app.js` and there is currently an `./src/app.js`; you can add other source files as well.
 5. Create an `index.html` HTML file in your `./src` directory and add a link to `<script src="app.bundle.js"></script>
 ` in your HTML file.
-6. In your terminal, run `webpack-dev-server` to launch your webserver.
-7. Run `yarn start` to begin running Webpack in production mode. Browse to `localhost:8080` to see your website.
+6. Run `yarn start` to begin running Webpack in production mode. Browse to `localhost:8080` to see your website.
 
 #### Releasing for Production
 
