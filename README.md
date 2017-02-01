@@ -29,7 +29,7 @@ Webpack can load/import individual Javascript files as needed. In `/src/js/app.j
 
 Webpack 2 removes ES6 modules (anything using the `import ...` syntax) that aren't actually imported into your project through a technique called _tree shaking_. Notice that in your `build` or `prod` output, `/src/js/components/NotUseComponent.js` is not included in the output.
 
-#### Promise Polyfill for older browsers
+#### window.Promise Polyfill for older browsers
 
 In Webpack 1.x, you had to specify a Promsie library. In Webpack 2, a `Promise` polyfill must be included for browsers that do not support it. [Check to see if you need a Polyfill on caniuse](http://caniuse.com/#feat=promises). If you do, in the `/src/js/app.js` file, you could include the following snippet to utilize Lazy Loading (code splitting) to import in your Polyfill. This way, you only load the additional script if needed.
 
@@ -63,5 +63,37 @@ Or use `.then` instead:
 ```js
 promise.then(undefined, function(err) {
   // ...
+});
+```
+
+#### window.fetch Polyfill
+
+If your browser audience does not include support for ES6 `fetch()` (the ES6 alternative to $.ajax), you will need a polyfill. [Check to see if you need a Polyfill on caniuse](http://caniuse.com/#feat=fetch). If you do, in the `/src/js/app.js` file, you could include the following snippet to utilize Lazy Loading (code splitting) to import in your Polyfill. This way, you only load the additional script if needed. 
+
+Add the dependency first.
+
+`yarn add whatwg-fetch`
+
+Then, import via code-splitting/lazy loading.
+
+```javascript
+// make sure this is hoisted first!
+if (!window.fetch) {
+  System.import('es6-promise').polyfill();
+}
+```
+
+Then, `fetch()` away and [read the Mozilla documentation on using fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch).
+
+```javascript
+const input = document.querySelector('input[type="file"]');
+
+let data = new FormData();
+data.append('file', input.files[0]);
+data.append('user', 'hubot');
+
+fetch('/avatars', {
+  method: 'POST',
+  body: data
 });
 ```
