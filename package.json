@@ -11,5 +11,8 @@
     "prod": "webpack --optimize-minimize",
     "start": "webpack-dev-server --inline --hot"
   },
-  "name": "webpack2-boilerplate"
+  "name": "webpack2-boilerplate",
+  "engines": {
+    "node": "8.9.x"
+  }
 }
