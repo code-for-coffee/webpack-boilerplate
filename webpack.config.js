@@ -1,7 +1,6 @@
 const webpack = require ('webpack');
 
-// grab airline code from config
-// store somewhere (aka cookie)
+// use for 3rd party dependencies (vendor)
 const extractSharedLibraries = new webpack.optimize.CommonsChunkPlugin({
   name: 'commonLibs',
   filename: 'commonLibs.js'
@@ -25,7 +24,7 @@ const config = {
       contentBase: __dirname //+ '/src/'
     },
     plugins: [
-      extractSharedLibraries,
+      /*extractSharedLibraries,*/
       treeShakenMinifyer,
       new webpack.NamedModulesPlugin()
     ],
@@ -37,7 +36,7 @@ const config = {
           test: /\.js$/,
           loader: 'babel-loader',
           query: {
-            presets: [['es2015', { modules: false }]]
+            presets: ["env"]
           }
         }
       ]
