@@ -2,7 +2,7 @@ import SampleComponent from './components/SampleComponent';
 
 window.onload = (event) => {
 
-  let myComponent = new SampleComponent('.note', 'Hey there! Webpack 2.x is working!');
+  let myComponent = new SampleComponent('#root', 'Hey there! This is the Webpack 3.x Boilerplate!');
   myComponent.render();
 
   let lazyBtn = document.querySelector('#lazy-btn');

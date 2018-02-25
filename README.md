@@ -1,16 +1,16 @@
-## Webpack 2 Boilerplate
+## Webpack Boilerplate
 
-This boilerplate is designed to get you up and running with Webpack 2. It is minimally configured but supports native ES6 and ES6 modules using Babel.
+[![Build Status](https://travis-ci.org/code-for-coffee/webpack-boilerplate.svg?branch=master)](https://travis-ci.org/code-for-coffee/webpack-boilerplate)
+
+This boilerplate is designed to get you up and running with Webpack 3. It is minimally configured but supports native ES6 and ES6 modules using Babel.
 
 #### Development Quickstart
 
 1. Clone this repository to your local machine.
-2. Run `yarn install` to install dependencies from your `package.json`. Don't have Yarn? Install it with `brew install yarn`.
+2. Run `yarn install` / `npm i` to install dependencies from your `package.json`. 
 3. Place source files for your client side code inside of the `./src` directory. 
 4. Open the `webpack.config.js` and add starting source files to your `entry` file. Note the current entry file is `app.js` and there is currently an `./src/app.js`; you can add other source files as well.
-5. Create an `index.html` HTML file in your `./src` directory and add a link to `<script src="app.bundle.js"></script>
-` in your HTML file.
-6. Run `yarn start` to begin running Webpack in production mode. Browse to `localhost:8080` to see your website.
+5. Run `npm run start` / `yarn start` to begin running Webpack in production mode. Browse to `localhost:8080` to see your website.
 
 #### Releasing for Production
 
