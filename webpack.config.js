@@ -16,9 +16,9 @@ const treeShakenMinifier = new webpack.LoaderOptionsPlugin({
 });
 
 const config = {
-  context: __dirname + '/src/', // reach to root of app && outside of node_modules
+  context: __dirname + '/src', // reach to root of app && outside of node_modules
   entry: {
-    app: './index.js'
+    app: './js/app.js'
   },
   output: {
     path: __dirname + '/dist',
@@ -53,14 +53,6 @@ const config = {
         exclude: /(node_modules|bower_components)/,
         test: /\.js$/,
         loader: 'babel-loader',
-        query: {
-          presets: ["env", "react"]
-        }
-      },
-      {
-        exclude: /(node_modules|bower_components)/,
-        test: /\.js$/,
-        loader: 'eslint-loader',
         query: {
           presets: ["env", "react"]
         }
