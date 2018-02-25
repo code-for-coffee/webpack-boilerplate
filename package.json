@@ -15,7 +15,8 @@
   "scripts": {
     "build": "webpack -p",
     "prod": "webpack --optimize-minimize",
-    "start": "webpack-dev-server --inline --hot"
+    "start": "webpack-dev-server --inline --hot",
+    "test": "webpack --optimize-minimize"
   },
   "name": "webpack-boilerplate",
   "engines": {
