@@ -53,8 +53,9 @@ const config = {
         exclude: /(node_modules|bower_components)/,
         test: /\.js$/,
         loader: 'babel-loader',
-        query: {
-          presets: ["env", "react"]
+        options: {
+          presets: ['@babel/preset-env'],
+          plugins: ['@babel/plugin-transform-runtime']
         }
       }
     ]
