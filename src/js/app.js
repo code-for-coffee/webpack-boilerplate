@@ -4,7 +4,7 @@ import { jsonRequest } from "./helpers/jsonRequest";
 window.onload = event => {
   const myComponent = new SampleComponent(
     "#root",
-    "Hey there! This is the Webpack 3.x Boilerplate!"
+    "Hey there! This is the Webpack 4.x Boilerplate!"
   );
   myComponent.render();
 
