@@ -2,20 +2,20 @@
 
 [![Build Status](https://travis-ci.org/code-for-coffee/webpack-boilerplate.svg?branch=master)](https://travis-ci.org/code-for-coffee/webpack-boilerplate)
 
-This boilerplate is designed to get you up and running with Webpack 3. It is minimally configured but supports native ES6 and ES6 modules using Babel.
+This boilerplate is designed to get you up and running with Webpack 4. It is minimally configured but supports native ES6 and ES6 modules using Babel.
 
 #### Development Quickstart
 
 1. Clone this repository to your local machine.
-2. Run `yarn install` / `npm i` to install dependencies from your `package.json`. 
-3. Place source files for your client side code inside of the `./src` directory. 
+2. Run `yarn install` / `npm i` to install dependencies from your `package.json`.
+3. Place source files for your client side code inside of the `./src` directory.
 4. Open the `webpack.config.js` and add starting source files to your `entry` file. Note the current entry file is `app.js` and there is currently an `./src/app.js`; you can add other source files as well.
 5. Run `npm run start` / `yarn start` to begin running Webpack in production mode. Browse to `localhost:8080` to see your website.
 
 #### Releasing for Production
 
-* You can build an _unminified_ version of your source code by running `yarn build`. This will place the output files in your `/dist` directory. You'll just need to include those files in your HTML file(s) as needed.
-* You can also build a _minified_ version of your source code by running `yarn prod`. This also places your code in the `/dist` folder. This is the best option to use for performance.
+- You can build an _unminified_ version of your source code by running `yarn build`. This will place the output files in your `/dist` directory. You'll just need to include those files in your HTML file(s) as needed.
+- You can also build a _minified_ version of your source code by running `yarn prod`. This also places your code in the `/dist` folder. This is the best option to use for performance.
 
 #### Debugging in the Browser
 
@@ -23,7 +23,7 @@ Webpack 2 provides source maps in the debug window of your browser. In the **sou
 
 #### Lazy Loading
 
-Webpack can load/import individual Javascript files as needed. In `/src/js/app.js` you'll notice that there is a `System.import()` for `LazyLoadingComponent.js`. This allows the developer to only load code as needed providing a better user experience. _Note_: you should provide some sort of user interface experience such as a loading bar to let the user know that there is something being performed in the background. 
+Webpack can load/import individual Javascript files as needed. In `/src/js/app.js` you'll notice that there is a `System.import()` for `LazyLoadingComponent.js`. This allows the developer to only load code as needed providing a better user experience. _Note_: you should provide some sort of user interface experience such as a loading bar to let the user know that there is something being performed in the background.
 
 #### Tree Shaking
 
@@ -42,7 +42,7 @@ Then, import via code-spliting/lazy loading:
 ```javascript
 // make sure this is hoisted first!
 if (!window.Promise) {
-  System.import('es6-promise').polyfill();
+  System.import("es6-promise").polyfill();
 }
 ```
 
@@ -53,7 +53,7 @@ if (!window.Promise) {
 However, please remember that such technique is already provided by most common minifiers, making the resulting code safe for old browsers and production:
 
 ```js
-promise['catch'](function(err) {
+promise["catch"](function(err) {
   // ...
 });
 ```
@@ -68,7 +68,7 @@ promise.then(undefined, function(err) {
 
 #### window.fetch Polyfill
 
-If your browser audience does not include support for ES6 `fetch()` (the ES6 alternative to $.ajax), you will need a polyfill. [Check to see if you need a Polyfill on caniuse](http://caniuse.com/#feat=fetch). If you do, in the `/src/js/app.js` file, you could include the following snippet to utilize Lazy Loading (code splitting) to import in your Polyfill. This way, you only load the additional script if needed. 
+If your browser audience does not include support for ES6 `fetch()` (the ES6 alternative to \$.ajax), you will need a polyfill. [Check to see if you need a Polyfill on caniuse](http://caniuse.com/#feat=fetch). If you do, in the `/src/js/app.js` file, you could include the following snippet to utilize Lazy Loading (code splitting) to import in your Polyfill. This way, you only load the additional script if needed.
 
 Add the dependency first.
 
@@ -79,7 +79,7 @@ Then, import via code-splitting/lazy loading.
 ```javascript
 // make sure this is hoisted first!
 if (!window.fetch) {
-  System.import('es6-promise').polyfill();
+  System.import("es6-promise").polyfill();
 }
 ```
 
@@ -89,11 +89,11 @@ Then, `fetch()` away and [read the Mozilla documentation on using fetch](https:/
 const input = document.querySelector('input[type="file"]');
 
 let data = new FormData();
-data.append('file', input.files[0]);
-data.append('user', 'hubot');
+data.append("file", input.files[0]);
+data.append("user", "hubot");
 
-fetch('/avatars', {
-  method: 'POST',
+fetch("/avatars", {
+  method: "POST",
   body: data
 });
 ```
@@ -114,7 +114,7 @@ const request = async (URI, hook) => {
   //console.log(json);
   if (typeof hook === "function") hook(json);
 };
-  
+
 /**
  * jsonRequest
  * Async fetch method that fetches a URI and passes JSON to a hook function
