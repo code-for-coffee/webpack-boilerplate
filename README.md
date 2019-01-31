@@ -1,4 +1,4 @@
-## Webpack Boilerplate
+## Webpack Boilerplate :100:
 
 [![Build Status](https://travis-ci.org/code-for-coffee/webpack-boilerplate.svg?branch=master)](https://travis-ci.org/code-for-coffee/webpack-boilerplate)
 
@@ -96,4 +96,28 @@ fetch('/avatars', {
   method: 'POST',
   body: data
 });
+```
+
+#### async + await support
+
+This Webpack config now supports async+await. The following example is included in the `./helpers/` directory:
+
+```js
+/**
+ * request
+ * @param URI URL for an API, such as http://api.gogoair.com
+ * @param hook a function that is called when response JSON is provided
+ */
+const request = async (URI, hook) => {
+  const response = await fetch(URI);
+  const json = await response.json();
+  //console.log(json);
+  if (typeof hook === "function") hook(json);
+};
+  
+/**
+ * jsonRequest
+ * Async fetch method that fetches a URI and passes JSON to a hook function
+ */
+export const jsonRequest = request;
 ```
