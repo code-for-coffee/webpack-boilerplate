@@ -11,7 +11,7 @@ class LazyLoadingComponent {
     this.el = el;
   }
   render() {
-    let el = document.querySelector(this.el);
+    const el = document.querySelector(this.el);
     el.innerHTML = lang.data;
   }
 }

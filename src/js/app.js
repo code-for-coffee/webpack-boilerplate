@@ -2,21 +2,21 @@ import SampleComponent from "./components/SampleComponent";
 import { jsonRequest } from "./helpers/jsonRequest";
 
 window.onload = event => {
-  let myComponent = new SampleComponent(
+  const myComponent = new SampleComponent(
     "#root",
     "Hey there! This is the Webpack 3.x Boilerplate!"
   );
   myComponent.render();
 
-  let lazyBtn = document.querySelector("#lazy-btn");
-  lazyBtn.addEventListener("click", event => {
+  const lazyBtn = document.querySelector("#lazy-btn");
+  lazyBtn.addEventListener("click", evt => {
     console.log("Loading LazyLoadingComponent");
 
     import("./components/LazyLoadingComponent")
       .then(LazyLoadingComponent => {
         console.log(LazyLoadingComponent.default);
         debugger;
-        let lazyComponent = new LazyLoadingComponent.default(".lazy");
+        const lazyComponent = new LazyLoadingComponent.default(".lazy");
         lazyComponent.render();
       })
       .catch(error => {
