@@ -1,9 +1,9 @@
 /**
  * Created by code-for-coffee on 1/23/17.
  */
-import lang from '../helpers/Data';
+import lang from "../helpers/Data";
 
-console.log('Loaded LazyLoadingComponent.js');
+console.log("Loaded LazyLoadingComponent.js");
 
 class LazyLoadingComponent {
   constructor(el) {
@@ -16,4 +16,4 @@ class LazyLoadingComponent {
   }
 }
 
-module.exports = LazyLoadingComponent;
+export default LazyLoadingComponent;

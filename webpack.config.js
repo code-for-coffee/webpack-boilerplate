@@ -1,14 +1,8 @@
-const webpack = require ('webpack');
-const pkg = require('./package.json'); // reach to root of app && outside of node_modules
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require("webpack");
+const pkg = require("./package.json"); // reach to root of app && outside of node_modules
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-
-// use for 3rd party deps
-const extractSharedLibraries = new webpack.optimize.CommonsChunkPlugin({
-  name: 'commonLibs',
-  filename: 'commonLibs.js'
-});
 
 const treeShakenMinifier = new webpack.LoaderOptionsPlugin({
   minimize: true,
@@ -16,24 +10,46 @@ const treeShakenMinifier = new webpack.LoaderOptionsPlugin({
 });
 
 const config = {
-  context: __dirname + '/src', // reach to root of app && outside of node_modules
+  context: __dirname + "/src", // reach to root of app && outside of node_modules
   entry: {
-    app: './js/app.js'
+    app: "./js/app.js"
   },
   output: {
-    path: __dirname + '/dist',
-    filename: 'app.bundle.js'
+    path: __dirname + "/dist",
+    filename: "app.bundle.js"
   },
   devServer: {
     contentBase: __dirname //+ '/src/'
   },
+  optimization: {
+    splitChunks: {
+      chunks: "async",
+      minSize: 30000,
+      maxSize: 0,
+      minChunks: 1,
+      maxAsyncRequests: 5,
+      maxInitialRequests: 3,
+      automaticNameDelimiter: "~",
+      name: true,
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true
+        }
+      }
+    }
+  },
   plugins: [
-    new ExtractTextPlugin({ filename: 'app.bundle.css' }),
-    extractSharedLibraries,
+    new ExtractTextPlugin({ filename: "app.bundle.css" }),
     treeShakenMinifier,
     new webpack.NamedModulesPlugin(),
     new HtmlWebpackPlugin({
-      template: 'index.html'
+      template: "index.html"
     })
   ],
   devtool: "source-map",
@@ -42,9 +58,9 @@ const config = {
       {
         test: [/\.scss$/],
         loader: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
+          fallback: "style-loader",
           use: [
-            'css-loader?sourceMap!sass-loader?sourceMap&outputStyle=compact'
+            "css-loader?sourceMap!sass-loader?sourceMap&outputStyle=compact"
           ]
         }),
         exclude: /node_modules/
@@ -52,10 +68,10 @@ const config = {
       {
         exclude: /(node_modules|bower_components)/,
         test: /\.js$/,
-        loader: 'babel-loader',
+        loader: "babel-loader",
         options: {
-          presets: ['@babel/preset-env'],
-          plugins: ['@babel/plugin-transform-runtime']
+          presets: ["@babel/preset-env"],
+          plugins: ["@babel/plugin-transform-runtime"]
         }
       }
     ]

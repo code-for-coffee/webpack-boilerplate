@@ -1,7 +1,7 @@
 /**
  * Created by code-for-coffee on 1/10/17.
  */
-console.log('Loaded Component.js');
+console.log("Loaded Component.js");
 
 class Component {
   constructor(el, content) {
@@ -15,4 +15,4 @@ class Component {
   }
 }
 
-module.exports = Component;
+export default Component;

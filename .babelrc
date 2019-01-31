@@ -1,17 +1,24 @@
 {
   "presets": [
-    ["@babel/preset-env", {
-      "targets": {
-        "esmodules": true
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "esmodules": true
+        }
       }
-    }]
+    ]
   ],
   "plugins": [
-    ["@babel/plugin-transform-runtime", {
-      "helpers": false,
-      "polyfill": false,
-      "regenerator": true,
-      "moduleName": "@babel/runtime"
-    }]
+    [
+      "@babel/plugin-transform-runtime",
+      {
+        "helpers": false,
+        "polyfill": false,
+        "regenerator": true,
+        "moduleName": "@babel/runtime"
+      }
+    ],
+    ["@babel/plugin-syntax-dynamic-import"]
   ]
 }
