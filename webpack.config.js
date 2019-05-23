@@ -56,7 +56,7 @@ const config = {
   module: {
     rules: [
       {
-        test: [/\.scss$/],
+        test: [/\.css$/],
         loader: ExtractTextPlugin.extract({
           fallback: "style-loader",
           use: [

@@ -1,3 +1,5 @@
+import "./styles.css";
+
 import SampleComponent from "./components/SampleComponent";
 import { jsonRequest } from "./helpers/jsonRequest";
 
